@@ -21,6 +21,7 @@ def create_bill():
             ["pensioner", -0.1, "Pensioner discount - 10%"]]
     items = []
     prices = []
+    total = 0.0
 
     items_number = int(input("How many items were ordered? "))
     while items_number <= 0:
@@ -44,12 +45,12 @@ def create_bill():
     for i in items:
         prices.append(float(i[2]))
 
-    fees_applied = process_discounts()
+    fees_applied = process_fees()
 
     for fee_data in fees:
-        if fees_applied[fee[0]]:
-            fee_price = round(total * fee[1], 2)
-            items.append([1, fee[2], fee_price])
+        if fees_applied[fee_data[0]]:
+            fee_price = round(total * fee_data[1], 2)
+            items.append([1, fee_data[2], fee_price])
             prices.append(fee_price)
 
     total = sum(prices)
@@ -57,8 +58,13 @@ def create_bill():
     # Print receipt
     print("Receipt\n")
     for i in items:
+<<<<<<< HEAD
         print(f"{str(i[0])} {i[1]} {i[2]:.2f}")
     print(f"\nTotal: {total:.2f)}")
+=======
+        print(f"{str(i[0])} {i[1]} {float(i[2]):.2f}")
+    print(f"\nTotal: {str(total)}")
+>>>>>>> c0ef39f39096f49f2a3ac71adc567b98a635d56b
 
 if __name__ == "__main__":
     print("Cafe Adder 0.2.1, 25 Sep 2024 - Oliver Nguyen")
