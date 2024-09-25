@@ -58,13 +58,8 @@ def create_bill():
     # Print receipt
     print("Receipt\n")
     for i in items:
-<<<<<<< HEAD
         print(f"{str(i[0])} {i[1]} {i[2]:.2f}")
     print(f"\nTotal: {total:.2f)}")
-=======
-        print(f"{str(i[0])} {i[1]} {float(i[2]):.2f}")
-    print(f"\nTotal: {str(total)}")
->>>>>>> c0ef39f39096f49f2a3ac71adc567b98a635d56b
 
 if __name__ == "__main__":
     print("Cafe Adder 0.2.1, 25 Sep 2024 - Oliver Nguyen")
