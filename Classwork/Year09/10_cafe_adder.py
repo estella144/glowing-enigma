@@ -2,11 +2,15 @@ def process_fees():
     fees_applied = {"take_out": False,
                     "pensioner": False}
 
-    choice = input("Is the order to take out? [Y/N, default: N] ")
+    choice = input("Is the order to take out? [Y/N, default: N] ").lower()
+    while choice not in ['y', 'n', '']:
+        choice = input("Invalid input. Please enter Y for Yes or N for No: ").lower()
     if choice.lower() == "y":
         fees_applied["take_out"] = True
 
-    choice = input("Is the customer a pensioner? [Y/N, default: N] ")
+    choice = input("Is the customer a pensioner? [Y/N, default: N] ").lower()
+    while choice not in ['y', 'n', '']:
+        choice = input("Invalid input. Please enter Y for Yes or N for No: ").lower()
     if choice.lower() == "y":
         fees_applied["pensioner"] = True
 
@@ -19,10 +23,21 @@ def create_bill():
     prices = []
 
     items_number = int(input("How many items were ordered? "))
+    while items_number <= 0:
+        items_number = int(input("Invalid number. Please enter a positive, nonzero number of items: "))
     for i in range(0, items_number):
-        item_name = input(f"Item {i+1} name: ")
+        item_name = input(f"Item {i+1} name: ").strip()
+        while not item_name:
+            item_name = input("Item name cannot be empty. Please enter a valid name: ").strip()
+
         item_up = float(input(f"Item {i+1} unit price: "))
+        while item_up < 0:
+            item_up = float(input("Invalid price. Please enter a positive price: "))
+
         item_qty = int(input(f"Item {i+1} quantity: "))
+        while item_qty <= 0:
+            item_qty = int(input("Invalid quantity. Please enter a positive quantity: "))
+
         item_price = item_up * item_qty
         items.append([item_qty, item_name, str(item_price)])
 
@@ -43,9 +58,9 @@ def create_bill():
     print("Receipt\n")
     for i in items:
         print(f"{str(i[0])} {i[1]} {i[2]:.2f}")
-    print(f"\nTotal: {str(total)}")
+    print(f"\nTotal: {total:.2f)}")
 
 if __name__ == "__main__":
-    print("Cafe Adder 0.2.0, 21 Sep 2024 - Oliver Nguyen")
+    print("Cafe Adder 0.2.1, 25 Sep 2024 - Oliver Nguyen")
     create_bill()
     input("[Enter] - Quit")
