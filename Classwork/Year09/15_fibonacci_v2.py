@@ -28,6 +28,7 @@ duration = t2 - t1
 
 print(f"Done. (Took {duration} seconds)")
 input("Press [Enter] to display results")
-print(sequence)
+for i in terms:
+    print(i)
 input("Done. Press [Enter] to quit")
 
