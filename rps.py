@@ -33,7 +33,7 @@ def get_high_score(name) -> int:
 
 def save_score(username, score) -> None:
     fields = [username, score]
-    with open(savefile, 'w') as csvfile:
+    with open(savefile, 'a') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(fields)
     print("Data successfully saved")
