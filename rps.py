@@ -57,10 +57,32 @@ def print_tutorial(name) -> None:
     print("Do you wish to continue?")
     input("Press [Enter] to start playing, or [Ctrl-C] to quit.")
 
+def player_won(player_move, opponent_move, mode) -> int:
+    move_conversion = {"R": 0, "P": 1, "S": 2, "P": 3, "L": 4}
+    # 1 is player win, -1 is loss and 0 is tie.
+    normal_outcomes = [[0, -1, 1], [1, 0, -1], [-1, 1, 0]]
+    5move_outcomes = [[0, -1, 1, -1, 1], [1, 0, -1, 1, -1],
+                      [-1, 1, 0, -1, 1], [1, -1, 1, 0, 1],
+                      [-1, 1, -1, 1, 0]]
+
+    if mode = "5move":
+        outcome_table = 5move_outcomes
+    else:
+        outcome_table = normal_outcomes
+
+    player_idx = move_conversion[player_move]
+    opponent_idx = move_conversion[opponent_move]
+
+    return 
+
 def main_loop() -> int:
     score = 0
     choices = ["R", "P", "S"]
-    full_choices = {"R": "Rock", "P": "Paper", "S": "Scissors"}
+    full_choices = {"R": "Rock",
+                    "P": "Paper",
+                    "S": "Scissors",
+                    "L": "Lizard",
+                    "P", "Spock"}
     defeated = False
 
     while not defeated:
